@@ -3,6 +3,7 @@ import { blog_data, blogCategories } from '../assets/assets'
 import { motion } from 'framer-motion'
 import Blogcard from './Blogcard'
 import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const BlogList = () => {
   const [menu, setMenu] = useState("All")
@@ -45,7 +46,7 @@ const BlogList = () => {
           map((blog) => <Blogcard key={blog._id} blog={blog} />)}
 
 
-      </div>
+      </div> 
     </div>
   ) 
 }

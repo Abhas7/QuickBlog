@@ -15,7 +15,7 @@ const BlogList = () => {
     return blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
   }
 
- 
+ //
   return (
     <div>
       <div className='flex justify-center gap-4 sm:gap-8 my-10 relative'>

@@ -3,7 +3,7 @@ import { blog_data, blogCategories } from '../assets/assets'
 import { motion } from 'framer-motion'
 import Blogcard from './Blogcard'
 import { useAppContext } from '../context/AppContext'
-import toast from 'react-hot-toast'
+
 
 const BlogList = () => {
   const [menu, setMenu] = useState("All")
@@ -12,7 +12,7 @@ const BlogList = () => {
   const filteredBlogs = () =>{
     if(input === ''){
       return blogs; 
-      /// 
+    
     }
     return blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
   }

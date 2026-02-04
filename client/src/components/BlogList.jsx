@@ -10,7 +10,7 @@ const BlogList = () => {
 
   const filteredBlogs = () =>{
     if(input === ''){
-      return blogs;
+      return blogs; 
       
     }
     return blogs.filter((blog)=> blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))

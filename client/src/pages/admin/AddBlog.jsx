@@ -14,7 +14,7 @@ const AddBlog = () => {
     const [isPublished, setIsPublished] = useState(false);
     const [description, setDescription] = useState('');
 
-    const generateContent = async ()=> {
+    const generateContent = async () => {
         // AI content generation logic here
     }
 
@@ -26,16 +26,16 @@ const AddBlog = () => {
         // await someApiCall({ title, subTitle, description, category, isPublished, image });
     }
 
-    useEffect(()=>{
-        if(!quillRef.current && editorRef.current){
+    useEffect(() => {
+        if (!quillRef.current && editorRef.current) {
             quillRef.current = new Quill(editorRef.current, {
                 theme: 'snow',
                 modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],
                         [{ 'header': 1 }, { 'header': 2 }],
-                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                        [{ 'indent': '-1'}, { 'indent': '+1' }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
                         [{ 'color': [] }, { 'background': [] }],
                         [{ 'align': [] }],
                         ['clean']
@@ -50,7 +50,7 @@ const AddBlog = () => {
         if (quillRef.current && description === '' && editorRef.current) {
             quillRef.current.root.innerHTML = '';
         }
-    },[description]);
+    }, [description]);
 
     return (
         <form onSubmit={onSubmitHandler} className='flex-1 bg-blue-50/50 text-gray-600 h-full overflow-scroll'>
@@ -85,7 +85,7 @@ const AddBlog = () => {
 
                     </div>
                     <button type='button' onClick={generateContent}
-                     className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>
+                        className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>
                         Generate With AI</button>
                 </div>
 
@@ -94,7 +94,7 @@ const AddBlog = () => {
                 <select onChange={e => setCategory(e.target.value)} name="category" className='mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded' value={category}>
                     <option value="">Select category</option>
 
-                    {blogCategories.map((item, index)=>{
+                    {blogCategories.map((item, index) => {
                         return <option key={index} value={item}>{item}</option>
                     })}
                 </select>
@@ -102,14 +102,14 @@ const AddBlog = () => {
                 <div className='flex gap-2 mt-4'>
                     <p>Publish Now</p>
                     <input type="checkbox" checked={isPublished} className='scale-125 cursor-pointer'
-                    onChange={e => setIsPublished(e.target.checked)} />
+                        onChange={e => setIsPublished(e.target.checked)} />
                 </div>
 
                 <button type="submit" className='mt-8 w-40 h-10 bg-primary text-white rounded cursor-pointer text-sm'> Add Blog</button>
 
 
 
-                
+
 
             </div>
 

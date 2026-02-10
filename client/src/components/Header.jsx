@@ -2,19 +2,22 @@ import React, { useRef } from 'react'
 import { assets } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
 
+
+
 const Header = () => {
 
-    const {setInput, input } = useAppContext();
+    const { setInput, input, setMenu } = useAppContext();
     const inputRef = useRef();
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        setInput(inputRef.current.value);
+        setInput(inputRef.current.value.trim());
+        setMenu('All');
     }
-     
+
     const onClear = () => {
-        setInput("");
-        inputRef.current.value = "";
+        setInput('');
+        inputRef.current.value = ''
     }
 
 
@@ -32,11 +35,11 @@ const Header = () => {
                     matters, and to write without filters. Whether it's one word or a thousand,
                     your story starts right here.</p>
 
-                    <form  onSubmit={onSubmitHandler} className='flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden'>
-                        <input ref={inputRef} type="text" placeholder='search for blogs' required  className='w-full pl-4 outline-none'/>
-                        <button type="submit" className='bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all'>Search</button>
+                <form onSubmit={onSubmitHandler} className='flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden'>
+                    <input ref={inputRef} type="text" placeholder='search for blogs' required className='w-full pl-4 outline-none' />
+                    <button type="submit" className='bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all'>Search</button>
 
-                    </form>
+                </form>
 
             </div>
             <div className='text-center'>

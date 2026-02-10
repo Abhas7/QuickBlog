@@ -14,6 +14,7 @@ export const AppProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [blogs, setBlogs] = useState([]);
     const [input, setInput] = useState("");
+    const [menu, setMenu] = useState("All");
 
     const fetchBlogs = async () => {
         try {
@@ -47,6 +48,8 @@ export const AppProvider = ({ children }) => {
         setBlogs,
         input,
         setInput,
+        menu,
+        setMenu
     }
     return (
         <AppContext.Provider value={value}>

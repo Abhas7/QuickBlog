@@ -43,17 +43,29 @@ const BlogList = () => {
         ))}
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mb-24 mx-8 sm:mx-16 xl:mx-40'>
+        {(() => {
+          const blogsToDisplay = filteredBlogs().filter((blog) => {
+            const isTestBlog = blog.title.toLowerCase().includes('test');
+            if (menu !== 'All' && input === '' && isTestBlog) return false;
+            return menu === "All" ? true : blog.category === menu;
+          });
 
-        {filteredBlogs().filter((blog) => {
-          const isTestBlog = blog.title.toLowerCase().includes('test');
-          if (input === '' && isTestBlog) return false;
+          if (blogsToDisplay.length === 0) {
+            return (
+              <div className='col-span-full text-center py-20'>
+                <p className='text-gray-500 text-lg'>No blogs found matching "{input}"</p>
+                <button
+                  onClick={() => { setInput(''); setMenu('All') }}
+                  className='mt-4 text-primary font-medium hover:underline cursor-pointer'
+                >
+                  Clear all filters
+                </button>
+              </div>
+            );
+          }
 
-          if (input !== '') return true;
-          if (menu === "All") return true;
-          return blog.category === menu;
-        }).map((blog) => <Blogcard key={blog._id} blog={blog} />)}
-
-
+          return blogsToDisplay.map((blog) => <Blogcard key={blog._id} blog={blog} />);
+        })()}
       </div>
     </div>
 

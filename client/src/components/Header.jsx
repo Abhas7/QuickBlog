@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { assets } from '../assets/assets'
+import { assets } from '../assets/assets';
 import { useAppContext } from '../context/AppContext'
 
 
@@ -11,8 +11,11 @@ const Header = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        setInput(inputRef.current.value.trim());
-        setMenu('All');
+        const searchValue = inputRef.current.value.trim();
+        setInput(searchValue);
+        if (searchValue) {
+            setMenu('All');
+        }
     }
 
     const onClear = () => {
